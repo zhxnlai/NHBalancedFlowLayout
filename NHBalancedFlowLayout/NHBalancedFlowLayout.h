@@ -21,7 +21,7 @@
 // The preferred size for each row measured in the scroll direction
 @property (nonatomic) CGFloat preferredRowSize;
 
-// The option to scale the item's prefered size to fill the preferred
+// The option to scale the item's preferred size to fill the preferred
 // row size by changing the aspect ratio of the item if necessary.
 @property (nonatomic) BOOL scalesItemToFill;
 
