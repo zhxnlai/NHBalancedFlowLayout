@@ -21,6 +21,10 @@
 // The preferred size for each row measured in the scroll direction
 @property (nonatomic) CGFloat preferredRowSize;
 
+// The option to scale the item's prefered size to fill the preferred
+// row size by changing the aspect ratio of the item if necessary.
+@property (nonatomic) BOOL scalesItemToFill;
+
 // The size of each section's header. This maybe dynamically adjusted
 // per section via the protocol method referenceSizeForHeaderInSection.
 @property (nonatomic) CGSize headerReferenceSize;

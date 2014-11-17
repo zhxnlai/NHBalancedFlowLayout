@@ -308,10 +308,10 @@
             
             CGSize actualSize = CGSizeZero;
             if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
-                actualSize = CGSizeMake(roundf(rowSize / summedRatios * (preferredSize.width / preferredSize.height)), roundf(rowSize / summedRatios));
+                actualSize = CGSizeMake(roundf(rowSize / summedRatios * (preferredSize.width / preferredSize.height)), self.scalesItemToFill && self.preferredRowSize != 0 ? self.preferredRowSize : roundf(rowSize / summedRatios));
             }
             else {
-                actualSize = CGSizeMake(roundf(rowSize / summedRatios), roundf(rowSize / summedRatios * (preferredSize.height / preferredSize.width)));
+                actualSize = CGSizeMake(self.scalesItemToFill && self.preferredRowSize != 0 ? self.preferredRowSize : roundf(rowSize / summedRatios), roundf(rowSize / summedRatios * (preferredSize.height / preferredSize.width)));
             }
             
             CGRect frame = CGRectMake(offset.x, offset.y, actualSize.width, actualSize.height);
@@ -384,6 +384,13 @@
 - (void)setPreferredRowSize:(CGFloat)preferredRowHeight
 {
     _preferredRowSize = preferredRowHeight;
+    
+    [self invalidateLayout];
+}
+
+- (void)setScalesItemToFill:(BOOL)scalesItemToFill
+{
+    _scalesItemToFill = scalesItemToFill;
     
     [self invalidateLayout];
 }
